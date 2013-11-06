@@ -1,0 +1,164 @@
+<!--
+Author:	Sara Levy
+Name:	index.html
+Date:	October 2013
+Desc:	This file contains the code to modify the look and feel of a Twitter feed.
+		Modifiable fields include the icon displayed, background and foreground colors
+		of both the header, body and tweet, in addition to the text displayed in the 
+		header.
+		
+		The interaction between the form, twitter output and this file are all done in
+		Javascript, no PHP.
+		
+		This code uses the Twitter feed from:
+		http://tutorialzine.com/2009/10/jquery-twitter-ticker/
+		
+		and Codebird, a Twitter library written in PHP:
+		https://github.com/jublonet/codebird-php
+
+Dependencies:		tweetpops.css, twitterSettings.html
+Parameters:			none
+Arguements:			none
+Revision History:	none
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>TweetPops</title>
+	<link rel="stylesheet" type="text/css" href="tweetpops.css" />
+	<link rel="stylesheet" type="text/css" href="jScrollPane/jScrollPane.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script type="text/javascript" src="jScrollPane/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="jScrollPane/jScrollPane.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script>
+	
+	// start with the option form hidden, openclose set to close and a default background of aqua
+	var openclose = "close";
+ 
+	$(document).ready(function(){	
+		document.getElementById('expandable-panel-content').style.visibility = 'hidden';
+		document.getElementById('expandable-panel-heading').style.background = 'aqua';
+	});
+	
+	function changeLink()
+	{
+		if (openclose == "close")
+		{
+			// OPEN: set form to visible, move form to right, set openclose to open
+			document.getElementById('expandable-panel-content').style.visibility = "visible";
+			document.getElementById('expandable-panel-content').style.zIndex="1";
+			$(document.getElementById('expandable-panel-content')).animate({'margin-top':20});			
+			$(document.getElementById('expandable-panel-content')).animate({'margin-left':180});			
+			document.getElementById('opencloseicon').innerHTML = "<img src=img/close.png>";
+			$('#expandable-panel-content').load('twitterSettings.html');
+			openclose = "open";
+		} else {
+			// CLOSE: hide form, change icon and set openclose to close
+			document.getElementById('expandable-panel-content').style.visibility = 'hidden';
+			document.getElementById('expandable-panel-content').style.zIndex="-1";
+			document.getElementById('opencloseicon').innerHTML = "<img src=img/open.png>";
+			openclose = "close";
+			// form.field.options[form.list.selectedIndex].text;  or form.field.selectedIndex
+		}
+	}
+	
+	
+	// One function per modifiable field
+	// These are called via onchange in the twitterSettings.html form
+	
+	// Update the Twitter Icon
+	function updatetwIcon(form)
+	{
+        var x = form.twIcon.value;
+		document.getElementById('twitIcon').innerHTML = "<img src=\"" + x + "\"/>";
+	}
+	
+	// Update the text in the Twitter header
+	function updatetwText(form)
+	{
+		var x = form.twText.value;
+		document.getElementById('twitHeading').innerHTML = "<h2>" + x + "</h2>";
+	}
+	
+	// Update the color of the text in the Twitter header
+	function updatetwHeadFcolor(form)
+	{
+		var x = form.twHeadFcolor.value;
+		document.getElementById('expandable-panel-heading').style.color = x;
+	}
+
+	// Update the background color of the Twitter header
+	function updatetwHeadBcolor(form)
+	{
+        var x = form.twHeadBcolor.value;
+		document.getElementById('expandable-panel-heading').style.background = x;
+	}
+	
+	// Update the color of the text in the Twitter body
+	function updatetwBodyTextFcolor(form)
+	{
+		var x = form.twBodyTextFcolor.value;
+		var tweets = document.getElementsByClassName("txt");
+
+		for(var i = 0; i < tweets.length; i++) {
+			tweets[i].style.color = x;
+ 		}
+	}
+	
+	// Update the background color of the entire app
+	function updatefullBKcolor(form)
+	{
+        var x = form.fullBKcolor.value;
+		document.getElementById('twitter-ticker').style.background = x;
+	}
+	
+	// Update the timestamp foreground color in the Twitter body
+	function updatetwBodyTimeFcolor(form)
+	{
+  		var x = form.twBodyTimeFcolor.value;
+		var tweets = document.getElementsByClassName("time");
+
+		for(var i = 0; i < tweets.length; i++) {
+			tweets[i].style.color = x;
+ 		}
+	}
+	
+	// Update the timestamp background color in the Twitter tweets
+	function updatetwBodyBcolor(form)
+	{
+        var x = form.twBodyBcolor.value;
+		var tweets = document.getElementsByClassName("tweet");
+
+		for(var i = 0; i < tweets.length; i++) {
+			tweets[i].style.background = x;
+ 		}
+	}		
+	</script>
+</head>
+
+<!--
+Desc:	The display is split between the top-bar, which contains both the expandable-panel-heading and 
+		the expandable-panel-content, and the tweet-container.
+-->
+<body>
+	<div id="main">
+		<div id="twitter-ticker">		
+			<div id="top-bar">
+				<div class="expandable-panel">
+					<div id="expandable-panel-heading">
+						<div id="twitIcon"><img src="img/twitter_64.png"/></div>
+						<div id="twitHeading"><h2>Heading</h2></div>
+						<div id="opencloseicon" onclick="changeLink()"/><img src="img/open.png"></div>
+					</div>
+					<div id="expandable-panel-content"></div>
+				</div>
+			</div>
+            <div id="tweet-container"><img id="loading" src="img/loading.gif" width="16" height="11" alt="Loading.." /></div>            
+            <div id="scroll"></div>
+        </div>
+	</div> 
+</body>
+</html>

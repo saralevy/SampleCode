@@ -1,0 +1,189 @@
+body{
+	font-family: Kristen ITC, Arial, sans-serif;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	background-color: white;
+}
+
+a:link { 
+	color: red;
+	font-weight: bold;
+}
+
+a:visited { 
+	color: red;
+	font-weight: bold;
+}
+
+#navfullwidth {
+	width: 100%;
+	height: auto;
+	background-image: url("chalkboard.jpg");
+	margin-top: 0;
+	background-size: 100% 100%;
+}
+
+#BAHSCE {
+	font-family: Kristen ITC, Arial, sans-serif;
+	width: 100%;
+	text-align: center;
+ 	font-size: 90%;
+	padding-top: 5px;
+	color: white;
+}
+
+#nav {
+	width: 100%;
+	text-align: center;
+	margin-top: 1%;
+	padding-bottom: 2%;
+}
+
+#nav img { 
+	border-style: none;
+}
+
+#lineone {
+	text-align:  left;
+}
+ 
+#output {
+	font-family: sans-serif;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	overflow:auto;
+	color: black;
+	width: 80%; 
+	font-size: 90%;
+}
+/*
+*   Split into 3 devices:  
+*		Mobile phones:	less than 480
+*						Now: 	increase the output width and font-size
+*						Later: 	display only the class name
+*		Tablets:		480-1024 pixels
+*						Now: no change needed
+*		Computers:		greater than 1024
+*						Now: no change needed
+*/
+@media only screen and (max-device-width: 480px) {
+	#output { width: 100%; font-size: 100%;}  
+}
+
+p{
+	font-family:sans-serif, Tahoma, Geneva;
+	font-size:14px; 
+	line-height:22px;
+	margin-bottom:20px;
+}
+
+#container{
+	width:700px;
+	margin:auto;
+}
+
+a.adjust{
+	font-size:10px; 
+	padding:5px;
+	display:block;
+	font-weight:bold;
+	background:#eee;
+	color:#333;
+	border-radius:12px;
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	width:80px;
+	text-align:center;
+	text-decoration:none;
+}
+
+a.adjust:hover{
+	background:#333;
+	color:#FFF;
+	-webkit-transition: all 400ms; /*safari and chrome */
+	-moz-transition: all 400ms ease; /* firefox */
+	-o-transition: all 400ms ease; /* opera */
+	transition: all 400ms ease;
+}
+
+hr {
+	color: #ed1218;
+	background-color: #ed1218;
+	height: 10px;
+	text-decoration:bold;
+}
+
+th.namecolumn {
+	color: #ed1218;
+	font-family: Kristen ITC, Arial, sans-serif;
+	font-size: 110%;
+	text-align: left;
+	text-decoration:bold;
+}
+	
+th.datecolumn {
+	color: #ed1218;
+	font-family: Kristen ITC, Arial, sans-serif;
+	font-size: 110%;
+	text-align: left;
+	text-decoration:bold;
+}
+
+th.locationcolumn {
+	color: #ed1218;
+	font-family: Kristen ITC, Arial, sans-serif;
+	font-size: 110%;
+	text-align: left;
+	text-decoration:bold;
+}
+	
+th.agecolumn {
+	color: #ed1218;
+	font-family: Kristen ITC, Arial, sans-serif;
+	font-size: 110%;
+	text-align: left;
+	text-decoration:bold;
+}
+	
+th.contactcolumn {
+	color: #ed1218;
+	font-family: Kristen ITC, Arial, sans-serif;
+	font-size: 110%;
+	text-align: left;
+	text-decoration:bold;
+}
+	
+#about {
+	width: 80%;
+	height: 70%;
+	float: right;
+}	
+
+#newspaper img{
+	height:150px;
+	width:auto;
+}
+
+#inputform {
+	height: 70%;
+	font-family: sans-serif;
+	width: 75%;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	font-size: 90%;
+	overflow:auto;
+	color: black;
+}
+
+#footer {
+	width: 100%;
+	height: 5%;
+	font-size: 90%;
+	color: black;
+	text-align: right;
+	float: left;
+}
